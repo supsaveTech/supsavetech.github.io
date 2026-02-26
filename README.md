@@ -30,7 +30,7 @@ That's it. Done. You're welcome.
 Want your own version you can customize? Follow these steps:
 
 #### 1. Fork the Repo
-- Go to [github.com/SahilGogna/v-day](https://github.com/SahilGogna/v-day)
+- Go to [github.com/supsaveTech/valentine-fun](https://github.com/supsaveTech/valentine-fun)
 - Click the **Fork** button in the top-right corner
 - This creates a copy of the repo under your GitHub account
 
