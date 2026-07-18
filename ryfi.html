@@ -2,630 +2,841 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-  <title>Rivers Youth Future Initiative</title>
-  <!-- Font Awesome 6 (free) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, shrink-to-fit=no">
+  <title>Rivers Youth Future Initiative | Empowering Youth</title>
+  <!-- Font Awesome 6 for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
     }
 
     body {
-      background-color: #f9fbfd;
-      color: #1e2a3a;
-      line-height: 1.6;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: #f9fbfd;
+      color: #1e2b3c;
+      line-height: 1.5;
+      scroll-behavior: smooth;
     }
 
-    /* container */
+    /* Modern, clean design with accent colors - same theme */
+    :root {
+      --primary: #0f6b3a;
+      --primary-light: #1e8b4c;
+      --secondary: #f4b43a;
+      --accent: #0099cc;
+      --dark: #0a1f2f;
+      --light-bg: #ffffff;
+      --gray-bg: #f0f4f8;
+      --text-muted: #4a5c6c;
+      --shadow: 0 12px 28px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03);
+      --border-radius: 20px;
+      --transition: all 0.25s ease;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 24px;
     }
 
-    /* header / nav */
-    .navbar {
-      background: white;
-      box-shadow: 0 4px 12px rgba(0, 20, 40, 0.05);
-      padding: 0.8rem 0;
+    /* Header & Navigation */
+    header {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
     }
 
-    .nav-wrapper {
+    .nav-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      padding: 15px 0;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 1.6rem;
+      gap: 10px;
+      font-size: 1.7rem;
       font-weight: 700;
-      color: #0b2b4a;
-      letter-spacing: -0.5px;
+      color: var(--primary);
+      text-decoration: none;
     }
 
     .logo i {
-      color: #2a7faa;
-      font-size: 2rem;
+      font-size: 2.2rem;
+      color: var(--secondary);
     }
 
     .nav-links {
       display: flex;
-      gap: 1.8rem;
+      gap: 2.2rem;
+      align-items: center;
       list-style: none;
-      font-weight: 600;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: #1e2a3a;
-      padding: 0.3rem 0;
-      border-bottom: 2px solid transparent;
-      transition: 0.2s;
+      font-weight: 550;
+      color: #1e2b3c;
       font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 5px 0;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      border-bottom-color: #2a7faa;
-      color: #0b2b4a;
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2.5px;
+      background: var(--primary);
+      transition: 0.3s ease;
+      border-radius: 5px;
     }
 
-    /* mobile nav toggle */
-    .nav-toggle {
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
       display: none;
-      flex-direction: column;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--dark);
       cursor: pointer;
-      gap: 5px;
+      padding: 5px;
     }
 
-    .nav-toggle span {
-      width: 28px;
-      height: 3px;
-      background: #1e2a3a;
-      border-radius: 2px;
-      transition: 0.2s;
+    /* Buttons */
+    .btn {
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
     }
 
-    /* page sections */
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 8px 16px rgba(15,107,58,0.25);
+    }
+
+    .btn-primary:hover {
+      background: #0a5e30;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 22px rgba(15,107,58,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Section styles */
+    section {
+      padding: 70px 0;
+    }
+
     .page {
       display: none;
-      padding: 2.5rem 0 4rem;
     }
 
     .page.active {
       display: block;
     }
 
-    /* hero */
-    .hero {
-      background: linear-gradient(145deg, #eef5fa, #dce8f2);
-      border-radius: 2rem;
-      padding: 3rem 2.5rem;
-      margin-bottom: 2.5rem;
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+      color: #0a1f2f;
+      position: relative;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    /* ------- HERO SLIDER WITH IMAGE BACKGROUNDS ------- */
+    .hero-slider {
+      position: relative;
+      width: 100%;
+      border-radius: 40px;
+      overflow: hidden;
+      margin: 20px 0 30px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+      background: #e9f7ef; /* fallback */
+    }
+
+    .slides-container {
       display: flex;
-      flex-wrap: wrap;
+      transition: transform 0.6s ease-in-out;
+      width: 100%;
+    }
+
+    .slide {
+      min-width: 100%;
+      position: relative;
+      display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 50px 55px;
+      min-height: 420px;
+      /* Background image will be set via inline style or CSS class */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
-    .hero-content {
-      flex: 1 1 300px;
-    }
-
-    .hero-content h1 {
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: #0b2b4a;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      color: #2c4058;
-      max-width: 500px;
-      margin-bottom: 1.8rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #0b2b4a;
-      color: white;
-      padding: 0.8rem 2.2rem;
+    /* Overlay to ensure text readability while keeping theme colors */
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(233, 247, 239, 0.92) 0%, rgba(255, 255, 255, 0.88) 100%);
+      z-index: 1;
       border-radius: 40px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.25s;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 16px -8px rgba(11, 43, 74, 0.2);
     }
 
-    .btn:hover {
-      background: #1a3f60;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 20px -10px rgba(11, 43, 74, 0.3);
+    /* Optional: second overlay for darker images if needed */
+    .slide.dark-overlay::before {
+      background: linear-gradient(135deg, rgba(10, 31, 47, 0.7) 0%, rgba(15, 107, 58, 0.65) 100%);
     }
 
-    .hero-image {
-      flex: 1 1 200px;
-      text-align: center;
-      font-size: 6rem;
-      color: #2a7faa;
-      opacity: 0.7;
+    .slide.dark-overlay .slide-content h1,
+    .slide.dark-overlay .slide-content p {
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    /* cards */
-    .section-title {
-      font-size: 2rem;
+    .slide.dark-overlay .slide-content h1 span {
+      color: #f4b43a;
+      border-bottom-color: #f4b43a;
+    }
+
+    .slide-content {
+      flex: 1 1 400px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-content h1 {
+      font-size: 3.2rem;
       font-weight: 700;
-      color: #0b2b4a;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.3px;
+      line-height: 1.2;
+      color: #0a1f2f;
     }
 
-    .grid-2,
-    .grid-3 {
+    .slide-content h1 span {
+      color: var(--primary);
+      border-bottom: 4px solid var(--secondary);
+    }
+
+    .slide-image {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-image i {
+      font-size: 13rem;
+      color: var(--primary-light);
+      opacity: 0.8;
+      filter: drop-shadow(0 12px 14px rgba(0,0,0,0.08));
+    }
+
+    /* Image placeholder indicator */
+    .image-badge {
+      position: absolute;
+      bottom: 15px;
+      right: 25px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--primary);
+      z-index: 3;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .image-badge i {
+      font-size: 0.8rem;
+    }
+
+    /* Slider controls */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.85);
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+    }
+
+    .slider-btn:hover {
+      background: white;
+      color: #0a5e30;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+    }
+
+    .prev-btn {
+      left: 20px;
+    }
+
+    .next-btn {
+      right: 20px;
+    }
+
+    .dots-container {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(15,107,58,0.3);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      width: 28px;
+      border-radius: 12px;
+    }
+
+    /* Cards */
+    .card-grid {
       display: grid;
-      gap: 2rem;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 28px;
+      margin-top: 25px;
     }
 
     .card {
       background: white;
-      padding: 1.8rem 1.5rem;
-      border-radius: 1.8rem;
-      box-shadow: 0 12px 30px -10px rgba(0, 20, 40, 0.08);
-      transition: 0.25s;
-      border: 1px solid rgba(42, 127, 170, 0.05);
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid #eef2f6;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px -12px rgba(11, 43, 74, 0.12);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 38px rgba(0,0,0,0.08);
+      border-color: #d0e0d8;
     }
 
     .card i {
-      font-size: 2.6rem;
-      color: #2a7faa;
-      margin-bottom: 0.8rem;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 18px;
     }
 
-    .card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .card p {
-      color: #3d5168;
-    }
-
-    /* about */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .about-text h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .about-text p {
-      margin-bottom: 1.2rem;
-      color: #2c4058;
-    }
-
-    .stats {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-
-    .stat-item {
-      background: white;
-      padding: 0.8rem 1.8rem;
-      border-radius: 40px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      border: 1px solid #e8f0f6;
-    }
-
-    .stat-item strong {
-      font-size: 1.8rem;
-      color: #0b2b4a;
-    }
-
-    .about-icon {
-      text-align: center;
-      font-size: 7rem;
-      color: #2a7faa;
-      opacity: 0.3;
-    }
-
-    /* gallery */
+    /* Gallery */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
     }
 
     .gallery-item {
-      background: white;
-      border-radius: 1.8rem;
-      overflow: hidden;
-      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.04);
-      aspect-ratio: 1 / 1;
+      background: #d9e9e0;
+      border-radius: 22px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
-      color: #2a7faa;
-      background: #eef5fa;
-      transition: 0.2s;
-      border: 1px solid #dce8f2;
+      color: var(--primary);
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #e0f0e8, #c8e0d4);
+      transition: 0.3s;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.04);
     }
 
     .gallery-item:hover {
+      background: #b8d9c8;
       transform: scale(1.02);
-      background: #e2eef8;
     }
 
-    .gallery-item span {
-      background: rgba(11, 43, 74, 0.7);
-      color: white;
-      padding: 0.3rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-    }
-
-    /* courses */
-    .course-card {
-      background: white;
-      border-radius: 1.8rem;
-      padding: 1.8rem;
-      border-left: 5px solid #2a7faa;
-      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.04);
-    }
-
-    .course-card h3 i {
-      margin-right: 0.6rem;
-      color: #2a7faa;
-    }
-
-    .course-meta {
+    .course-list {
       display: flex;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .course-item {
+      background: white;
+      border-radius: 18px;
+      padding: 22px 28px;
+      display: flex;
       flex-wrap: wrap;
-      margin: 0.8rem 0 0.2rem;
-      color: #4b637c;
-      font-size: 0.95rem;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
     }
 
-    .course-meta i {
-      margin-right: 0.3rem;
-    }
-
-    .tag {
-      background: #e5f0f7;
-      color: #1a4c6e;
-      border-radius: 40px;
-      padding: 0.1rem 1rem;
+    .badge {
+      background: var(--secondary);
+      color: #0a1f2f;
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-weight: 700;
       font-size: 0.8rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-top: 0.5rem;
     }
 
-    /* footer */
     footer {
-      background: #0b1f30;
-      color: #b6cddf;
-      padding: 2.5rem 0 1.5rem;
-      margin-top: 2rem;
-      border-radius: 2rem 2rem 0 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 2rem;
-    }
-
-    .footer-grid h4 {
-      color: white;
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-    }
-
-    .footer-grid ul {
-      list-style: none;
-    }
-
-    .footer-grid li {
-      margin: 0.4rem 0;
-    }
-
-    .footer-grid a {
-      color: #b6cddf;
-      text-decoration: none;
-    }
-
-    .footer-grid a:hover {
-      color: white;
-    }
-
-    .copyright {
+      background: #0a1f2f;
+      color: #e0e9f0;
+      padding: 35px 0;
       text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid #2b4055;
-      margin-top: 2rem;
-      font-size: 0.9rem;
+      margin-top: 50px;
     }
 
-    /* responsive */
+    /* Responsive */
     @media (max-width: 768px) {
-      .nav-toggle {
-        display: flex;
+      .menu-toggle {
+        display: block;
       }
 
       .nav-links {
         display: none;
-        width: 100%;
         flex-direction: column;
-        gap: 0.8rem;
-        padding: 1rem 0;
-        border-top: 1px solid #e0eaf2;
-        margin-top: 0.5rem;
+        width: 100%;
+        gap: 15px;
+        margin-top: 18px;
+        background: white;
+        padding: 20px;
+        border-radius: 24px;
+        box-shadow: var(--shadow);
       }
 
-      .nav-links.open {
+      .nav-links.show {
         display: flex;
       }
 
-      .hero {
+      .slide {
         flex-direction: column;
+        padding: 35px 24px;
         text-align: center;
-        padding: 2rem 1.5rem;
+        min-height: 380px;
       }
 
-      .hero-content p {
-        margin-left: auto;
-        margin-right: auto;
+      .slide-content h1 {
+        font-size: 2.4rem;
       }
 
-      .about-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .stats {
-        justify-content: center;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      .slide-image i {
+        font-size: 7rem;
+        margin-top: 20px;
       }
 
       .section-title {
-        font-size: 1.8rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-content h1 {
         font-size: 2rem;
+      }
+
+      .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+      
+      .image-badge {
+        bottom: 10px;
+        right: 15px;
+        font-size: 0.7rem;
+        padding: 3px 10px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container nav-wrapper">
-      <div class="logo">
-        <i class="fas fa-seedling"></i> RYFI
-      </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#" class="active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="#" data-page="about"><i class="fas fa-info-circle"></i> About</a></li>
-        <li><a href="#" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
-        <li><a href="#" data-page="courses"><i class="fas fa-graduation-cap"></i> Courses</a></li>
-      </ul>
-      <div class="nav-toggle" id="navToggle">
-        <span></span><span></span><span></span>
+  <header>
+    <div class="container">
+      <div class="nav-bar">
+        <a href="#" class="logo" id="logoLink">
+          <i class="fas fa-seedling"></i> RYFI
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#" class="nav-item" data-page="home">Home</a></li>
+          <li><a href="#" class="nav-item" data-page="about">About</a></li>
+          <li><a href="#" class="nav-item" data-page="gallery">Gallery</a></li>
+          <li><a href="#" class="nav-item" data-page="courses">Courses</a></li>
+        </ul>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <!-- Page: Home -->
-  <section id="home" class="page active">
-    <div class="container">
-      <div class="hero">
-        <div class="hero-content">
-          <h1>Empowering youth,<br>building tomorrow</h1>
-          <p>Rivers Youth Future Initiative equips young leaders with skills, mentorship, and opportunities to shape a sustainable future.</p>
-          <a href="#" class="btn" data-page="courses">Explore courses <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="hero-image">
-          <i class="fas fa-hands-holding-child"></i>
-        </div>
-      </div>
-
-      <h2 class="section-title">Why RYFI?</h2>
-      <div class="grid-2">
-        <div class="card"><i class="fas fa-lightbulb"></i><h3>Innovation</h3><p>Hands-on learning in tech, green energy, and creative industries.</p></div>
-        <div class="card"><i class="fas fa-users"></i><h3>Community</h3><p>Join a network of changemakers and local mentors.</p></div>
-        <div class="card"><i class="fas fa-globe-africa"></i><h3>Global vision</h3><p>Programs designed with a future-ready, sustainable outlook.</p></div>
-        <div class="card"><i class="fas fa-hand-holding-heart"></i><h3>Support</h3><p>Scholarships, equipment, and ongoing guidance for every member.</p></div>
-      </div>
-
-      <div style="margin-top: 2.5rem; background: white; padding: 2rem; border-radius: 2rem; box-shadow: 0 8px 24px -8px rgba(0,0,0,0.03);">
-        <h3 style="font-size: 1.6rem;">Upcoming event</h3>
-        <p><i class="fas fa-calendar-alt" style="color:#2a7faa;"></i> 15 August 2026 – Youth Innovation Summit, Port Harcourt</p>
-        <a href="#" class="btn" style="margin-top: 0.5rem; padding: 0.5rem 1.8rem;">Register</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Page: About -->
-  <section id="about" class="page">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text">
-          <h2>About RYFI</h2>
-          <p>Rivers Youth Future Initiative is a youth-centered organisation founded in 2022. We believe that every young person in the Niger Delta deserves access to quality education, digital skills, and a platform to voice their ideas.</p>
-          <p>We partner with local schools, tech hubs, and international donors to deliver impactful programs in STEAM, entrepreneurship, and environmental stewardship.</p>
-          <div class="stats">
-            <div class="stat-item"><strong>2,400+</strong> youth reached</div>
-            <div class="stat-item"><strong>18</strong> partner organisations</div>
-            <div class="stat-item"><strong>85%</strong> employment/up-skilling rate</div>
+  <main class="container">
+    <!-- Home Page -->
+    <div id="home" class="page active">
+      <!-- IMAGE SLIDER HERO WITH BACKGROUND IMAGES -->
+      <div class="hero-slider">
+        <div class="slides-container" id="slidesContainer">
+          <!-- Slide 1 - Replace 'your-image-1.jpg' with your actual image path -->
+          <div class="slide" style="background-image: url('./images/gallery/image-1.png');" data-image="Slide 1 background">
+            <div class="slide-content">
+              <h1>Shape Your <span>Future</span><br>with Rivers Youth</h1>
+              <p style="font-size:1.2rem; margin: 20px 0 25px; color:#2d3f4e;">Empowering young leaders through skills, innovation, and community action.</p>
+              <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#" class="btn btn-primary" id="exploreCoursesBtn"><i class="fas fa-graduation-cap"></i> Explore Courses</a>
+                <a href="#" class="btn btn-outline" id="joinAboutBtn"><i class="fas fa-info-circle"></i> Learn More</a>
+              </div>
+            </div>
+            <div class="slide-image">
+              <i class="fas fa-hands-helping"></i>
+            </div>
+            <div class="image-badge"><i class="fas fa-image"></i> Youth Workshop</div>
+          </div>
+          
+          <!-- Slide 2 - Replace 'your-image-2.jpg' with your actual image path -->
+          <div class="slide dark-overlay" style="background-image: url('./images/gallery/image-1.png');" data-image="Slide 2 background">
+            <div class="slide-content">
+              <h1>Build <span>Skills</span><br>for Tomorrow</h1>
+              <p style="font-size:1.2rem; margin: 20px 0 25px; color:#2d3f4e;">Tech, agriculture, and creative programs designed for Rivers State youth.</p>
+              <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#" class="btn btn-primary" id="exploreCoursesBtn2"><i class="fas fa-laptop-code"></i> View Programs</a>
+                <a href="#" class="btn btn-outline" id="joinAboutBtn2"><i class="fas fa-users"></i> Join Community</a>
+              </div>
+            </div>
+            <div class="slide-image">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="image-badge"><i class="fas fa-image"></i> Tech Training</div>
+          </div>
+          
+          <!-- Slide 3 - Replace 'your-image-3.jpg' with your actual image path -->
+          <div class="slide" style="background-image: url('./images/gallery/image-1.png');" data-image="Slide 3 background">
+            <div class="slide-content">
+              <h1>Ignite <span>Change</span><br>in Your Community</h1>
+              <p style="font-size:1.2rem; margin: 20px 0 25px; color:#2d3f4e;">Join workshops, mentorship, and impact projects across Rivers State.</p>
+              <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#" class="btn btn-primary" id="exploreCoursesBtn3"><i class="fas fa-calendar-alt"></i> Upcoming Events</a>
+                <a href="#" class="btn btn-outline" id="joinAboutBtn3"><i class="fas fa-heart"></i> Support Us</a>
+              </div>
+            </div>
+            <div class="slide-image">
+              <i class="fas fa-sun"></i>
+            </div>
+            <div class="image-badge"><i class="fas fa-image"></i> Community Impact</div>
           </div>
         </div>
-        <div class="about-icon">
-          <i class="fas fa-people-arrows"></i>
+        <!-- Navigation Arrows -->
+        <button class="slider-btn prev-btn" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next-btn" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+        <!-- Dots -->
+        <div class="dots-container" id="dotsContainer"></div>
+      </div>
+
+      <section>
+        <h2 class="section-title">Why RYFI?</h2>
+        <p class="section-subtitle">Building a generation of confident, skilled youth ready to transform Rivers State.</p>
+        <div class="card-grid">
+          <div class="card"><i class="fas fa-laptop-code"></i><h3>Digital Skills</h3><p>Tech & innovation training for the modern economy.</p></div>
+          <div class="card"><i class="fas fa-users"></i><h3>Mentorship</h3><p>Connect with inspiring leaders and peer networks.</p></div>
+          <div class="card"><i class="fas fa-hand-holding-heart"></i><h3>Community Impact</h3><p>Projects that uplift local neighborhoods.</p></div>
         </div>
-      </div>
-      <div style="margin-top: 2rem; background: white; border-radius: 1.8rem; padding: 1.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
-        <h3><i class="fas fa-quote-left" style="color: #2a7faa;"></i> Our mission</h3>
-        <p style="font-size: 1.2rem; font-style: italic; max-width: 700px;">“To unlock the potential of Rivers youth through inclusive education, mentorship, and innovation, fostering a generation of leaders who drive sustainable development.”</p>
-      </div>
+      </section>
     </div>
-  </section>
 
-  <!-- Page: Gallery -->
-  <section id="gallery" class="page">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-camera"></i> Gallery</h2>
-      <p style="margin-bottom: 2rem; color: #2c4058;">Moments from our workshops, community events, and youth summits.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item"><i class="fas fa-code"></i><span>Coding lab</span></div>
-        <div class="gallery-item"><i class="fas fa-leaf"></i><span>Green project</span></div>
-        <div class="gallery-item"><i class="fas fa-robot"></i><span>Robotics</span></div>
-        <div class="gallery-item"><i class="fas fa-chalkboard"></i><span>Mentorship</span></div>
-        <div class="gallery-item"><i class="fas fa-users-cog"></i><span>Team building</span></div>
-        <div class="gallery-item"><i class="fas fa-seedling"></i><span>Farm visit</span></div>
-        <div class="gallery-item"><i class="fas fa-laptop-code"></i><span>Digital skills</span></div>
-        <div class="gallery-item"><i class="fas fa-handshake"></i><span>Partners</span></div>
-      </div>
+    <!-- About Page -->
+    <div id="about" class="page">
+      <section>
+        <h2 class="section-title">About RYFI</h2>
+        <p class="section-subtitle">Rivers Youth Future Initiative – igniting potential since 2020.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 35px; align-items: center;">
+          <div style="flex:1 1 300px;">
+            <i class="fas fa-bullseye" style="font-size:3rem; color:var(--primary); margin-bottom:15px;"></i>
+            <h3>Our Mission</h3>
+            <p style="color: var(--text-muted); margin: 12px 0 25px;">To equip young people with entrepreneurial mindsets, technical skills, and civic leadership tools to drive sustainable development in Rivers State.</p>
+            <h3>Vision</h3>
+            <p style="color: var(--text-muted);">A thriving youth population leading innovation and positive change across Nigeria.</p>
+          </div>
+          <div style="flex:1 1 250px; background: #eaf5ef; border-radius: 28px; padding: 28px;">
+            <i class="fas fa-quote-right" style="font-size:2rem; color:var(--secondary);"></i>
+            <p style="font-style:italic; margin:15px 0;">"RYFI gave me confidence and a path to start my own business."</p>
+            <strong>- Amara, Port Harcourt</strong>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
 
-  <!-- Page: Courses -->
-  <section id="courses" class="page">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Our courses</h2>
-      <p style="margin-bottom: 2rem; color: #2c4058;">Practical, hands-on programs designed for the future of work and leadership.</p>
-      <div class="grid-3">
-        <div class="course-card"><h3><i class="fas fa-code"></i> Full-stack web dev</h3><p>HTML, CSS, JavaScript, React, Node.js — build real projects.</p><div class="course-meta"><span><i class="far fa-clock"></i> 12 weeks</span><span><i class="fas fa-user-graduate"></i> 25 seats</span></div><span class="tag">tech</span></div>
-        <div class="course-card"><h3><i class="fas fa-solar-panel"></i> Renewable energy</h3><p>Solar installation, energy efficiency, and green entrepreneurship.</p><div class="course-meta"><span><i class="far fa-clock"></i> 8 weeks</span><span><i class="fas fa-user-graduate"></i> 20 seats</span></div><span class="tag">green</span></div>
-        <div class="course-card"><h3><i class="fas fa-bullhorn"></i> Digital marketing</h3><p>Social media strategy, content creation, analytics and branding.</p><div class="course-meta"><span><i class="far fa-clock"></i> 6 weeks</span><span><i class="fas fa-user-graduate"></i> 30 seats</span></div><span class="tag">creative</span></div>
-        <div class="course-card"><h3><i class="fas fa-microchip"></i> IoT & robotics</h3><p>Arduino, sensors, automation, and prototyping for smart solutions.</p><div class="course-meta"><span><i class="far fa-clock"></i> 10 weeks</span><span><i class="fas fa-user-graduate"></i> 18 seats</span></div><span class="tag">tech</span></div>
-        <div class="course-card"><h3><i class="fas fa-pencil-alt"></i> Entrepreneurship</h3><p>Business planning, finance, pitching, and impact measurement.</p><div class="course-meta"><span><i class="far fa-clock"></i> 8 weeks</span><span><i class="fas fa-user-graduate"></i> 25 seats</span></div><span class="tag">business</span></div>
-        <div class="course-card"><h3><i class="fas fa-paint-brush"></i> Creative design</h3><p>Graphic design, UI/UX, video editing, and brand identity.</p><div class="course-meta"><span><i class="far fa-clock"></i> 6 weeks</span><span><i class="fas fa-user-graduate"></i> 20 seats</span></div><span class="tag">creative</span></div>
-      </div>
-      <div style="margin-top: 2rem; padding: 1.5rem; background: #e5f0f7; border-radius: 2rem; text-align: center;">
-        <p><i class="fas fa-info-circle" style="color:#0b2b4a;"></i> Scholarships available for underrepresented youth. Contact us to learn more.</p>
-      </div>
+    <!-- Gallery Page -->
+    <div id="gallery" class="page">
+      <section>
+        <h2 class="section-title">Our Moments</h2>
+        <p class="section-subtitle">Workshops, events, and youth in action.</p>
+        <div class="gallery-grid">
+          <div class="gallery-item"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="gallery-item"><i class="fas fa-people-arrows"></i></div>
+          <div class="gallery-item"><i class="fas fa-laptop"></i></div>
+          <div class="gallery-item"><i class="fas fa-tree"></i></div>
+          <div class="gallery-item"><i class="fas fa-microphone-alt"></i></div>
+          <div class="gallery-item"><i class="fas fa-hands"></i></div>
+        </div>
+        <p style="margin-top: 25px; text-align: center; color: #4a5c6c;"><i class="fas fa-camera-retro"></i> More photos coming soon from our Rivers events.</p>
+      </section>
     </div>
-  </section>
 
-  <!-- Footer -->
+    <!-- Courses Page -->
+    <div id="courses" class="page">
+      <section>
+        <h2 class="section-title">Our Programs</h2>
+        <p class="section-subtitle">Hands-on courses designed for the future.</p>
+        <div class="course-list">
+          <div class="course-item">
+            <div><i class="fas fa-code" style="color:var(--primary); font-size:1.6rem; margin-right:10px;"></i> <strong>Web Development</strong></div>
+            <span class="badge">12 weeks</span>
+            <span>Beginner to Advanced</span>
+          </div>
+          <div class="course-item">
+            <div><i class="fas fa-solar-panel" style="color:var(--primary); font-size:1.6rem; margin-right:10px;"></i> <strong>Renewable Energy</strong></div>
+            <span class="badge">8 weeks</span>
+            <span>Solar & Clean Tech</span>
+          </div>
+          <div class="course-item">
+            <div><i class="fas fa-seedling" style="color:var(--primary); font-size:1.6rem; margin-right:10px;"></i> <strong>Agripreneurship</strong></div>
+            <span class="badge">10 weeks</span>
+            <span>Modern farming & business</span>
+          </div>
+          <div class="course-item">
+            <div><i class="fas fa-paint-brush" style="color:var(--primary); font-size:1.6rem; margin-right:10px;"></i> <strong>Creative Arts</strong></div>
+            <span class="badge">6 weeks</span>
+            <span>Design & multimedia</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
   <footer>
     <div class="container">
-      <div class="footer-grid">
-        <div><h4>RYFI</h4><ul><li>Rivers Youth Future Initiative</li><li>Port Harcourt, Nigeria</li></ul></div>
-        <div><h4>Quick links</h4><ul><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="courses">Courses</a></li></ul></div>
-        <div><h4>Connect</h4><ul><li><i class="fab fa-instagram"></i> @ryfi_ng</li><li><i class="fab fa-twitter"></i> @ryfi_initiative</li><li><i class="fas fa-envelope"></i> hello@ryfi.org</li></ul></div>
-      </div>
-      <div class="copyright">&copy; 2026 Rivers Youth Future Initiative. All rights reserved.</div>
+      <p><i class="far fa-copyright"></i> 2025 Rivers Youth Future Initiative. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size:0.9rem;">Empowering Rivers State · <i class="fas fa-map-pin"></i> Port Harcourt, Nigeria</p>
     </div>
   </footer>
 
   <script>
     (function() {
-      // Navigation toggle (mobile)
-      const toggle = document.getElementById('navToggle');
+      // ----- Page navigation system -----
+      const pages = document.querySelectorAll('.page');
+      const navItems = document.querySelectorAll('.nav-item');
+      const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
-      toggle.addEventListener('click', function(e) {
-        navLinks.classList.toggle('open');
-      });
 
-      // Page switching logic
-      const navItems = document.querySelectorAll('.nav-links a[data-page]');
-      const pages = {
-        home: document.getElementById('home'),
-        about: document.getElementById('about'),
-        gallery: document.getElementById('gallery'),
-        courses: document.getElementById('courses')
-      };
-
-      // also handle any other links that have data-page (buttons, footer)
       function switchPage(pageId) {
-        // hide all pages
-        Object.values(pages).forEach(p => p.classList.remove('active'));
-        // show selected
-        if (pages[pageId]) pages[pageId].classList.add('active');
-        // update nav active class
-        navItems.forEach(link => link.classList.remove('active'));
-        navItems.forEach(link => {
-          if (link.dataset.page === pageId) link.classList.add('active');
+        pages.forEach(page => {
+          page.classList.remove('active');
         });
-        // close mobile menu
-        navLinks.classList.remove('open');
-        // scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const activePage = document.getElementById(pageId);
+        if (activePage) activePage.classList.add('active');
+        
+        if (navLinks.classList.contains('show')) {
+          navLinks.classList.remove('show');
+        }
       }
 
-      // event listeners for nav links
-      navItems.forEach(link => {
-        link.addEventListener('click', function(e) {
+      navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
           e.preventDefault();
-          const page = this.dataset.page;
-          if (page) switchPage(page);
+          const pageId = this.getAttribute('data-page');
+          if (pageId) switchPage(pageId);
         });
       });
 
-      // handle footer and button links with data-page
-      document.querySelectorAll('[data-page]').forEach(el => {
-        // skip nav links already handled
-        if (el.closest('.nav-links')) return;
-        el.addEventListener('click', function(e) {
-          e.preventDefault();
-          const page = this.dataset.page;
-          if (page) switchPage(page);
-        });
+      document.getElementById('logoLink').addEventListener('click', function(e) {
+        e.preventDefault();
+        switchPage('home');
       });
 
-      // set default page (home is active by default, but ensure nav active)
-      // make sure home is active if none selected
-      if (!document.querySelector('.nav-links a.active')) {
-        const homeLink = document.querySelector('.nav-links a[data-page="home"]');
-        if (homeLink) homeLink.classList.add('active');
+      menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('show');
+      });
+
+      // ----- Slider functionality -----
+      const slidesContainer = document.getElementById('slidesContainer');
+      const slides = document.querySelectorAll('.slide');
+      const prevBtn = document.getElementById('prevSlide');
+      const nextBtn = document.getElementById('nextSlide');
+      const dotsContainer = document.getElementById('dotsContainer');
+      
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      let autoPlayInterval;
+
+      // Create dots dynamically
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('span');
+          dot.classList.add('dot');
+          if (i === 0) dot.classList.add('active');
+          dot.dataset.index = i;
+          dot.addEventListener('click', function() {
+            goToSlide(parseInt(this.dataset.index));
+            resetAutoPlay();
+          });
+          dotsContainer.appendChild(dot);
+        }
       }
+      createDots();
+
+      function updateDots(index) {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+
+      function goToSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentIndex = index;
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots(currentIndex);
+      }
+
+      function nextSlide() {
+        goToSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        goToSlide(currentIndex - 1);
+      }
+
+      function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 5000);
+      }
+
+      function resetAutoPlay() {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      }
+
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoPlay();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoPlay();
+      });
+
+      // Start autoplay
+      startAutoPlay();
+
+      // Pause on hover
+      const sliderElement = document.querySelector('.hero-slider');
+      sliderElement.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+      sliderElement.addEventListener('mouseleave', startAutoPlay);
+
+      // ----- Button link handlers -----
+      function bindButton(selector, targetPage) {
+        const btn = document.getElementById(selector);
+        if (btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            switchPage(targetPage);
+          });
+        }
+      }
+
+      bindButton('exploreCoursesBtn', 'courses');
+      bindButton('joinAboutBtn', 'about');
+      bindButton('exploreCoursesBtn2', 'courses');
+      bindButton('joinAboutBtn2', 'about');
+      bindButton('exploreCoursesBtn3', 'courses');
+      bindButton('joinAboutBtn3', 'about');
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const isClickInsideNav = event.target.closest('#navLinks') || event.target.closest('#menuToggle');
+        if (!isClickInsideNav && navLinks.classList.contains('show')) {
+          navLinks.classList.remove('show');
+        }
+      });
+
+      // Helper: log image paths for easy replacement
+      console.log('🖼️ Slides ready for background images:');
+      slides.forEach((slide, index) => {
+        const bgImage = slide.style.backgroundImage;
+        console.log(`Slide ${index + 1}: ${bgImage || 'no image set'} - ${slide.dataset.image || ''}`);
+      });
+      console.log('💡 Replace "your-image-1.jpg", "your-image-2.jpg", "your-image-3.jpg" with your actual image file paths.');
+      console.log('📌 Tip: Use .dark-overlay class on slides with darker images for better text contrast.');
+
     })();
   </script>
 </body>
