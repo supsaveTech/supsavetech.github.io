@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>Rivers Youth Future Initiative</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: #f9fbfd;
+      color: #1e2a3a;
+      line-height: 1.6;
+    }
+
+    /* container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* header / nav */
+    .navbar {
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 20, 40, 0.05);
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0b2b4a;
+      letter-spacing: -0.5px;
+    }
+
+    .logo i {
+      color: #2a7faa;
+      font-size: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1e2a3a;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      border-bottom-color: #2a7faa;
+      color: #0b2b4a;
+    }
+
+    /* mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .nav-toggle span {
+      width: 28px;
+      height: 3px;
+      background: #1e2a3a;
+      border-radius: 2px;
+      transition: 0.2s;
+    }
+
+    /* page sections */
+    .page {
+      display: none;
+      padding: 2.5rem 0 4rem;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, #eef5fa, #dce8f2);
+      border-radius: 2rem;
+      padding: 3rem 2.5rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-content {
+      flex: 1 1 300px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #0b2b4a;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #2c4058;
+      max-width: 500px;
+      margin-bottom: 1.8rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0b2b4a;
+      color: white;
+      padding: 0.8rem 2.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 16px -8px rgba(11, 43, 74, 0.2);
+    }
+
+    .btn:hover {
+      background: #1a3f60;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -10px rgba(11, 43, 74, 0.3);
+    }
+
+    .hero-image {
+      flex: 1 1 200px;
+      text-align: center;
+      font-size: 6rem;
+      color: #2a7faa;
+      opacity: 0.7;
+    }
+
+    /* cards */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0b2b4a;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: white;
+      padding: 1.8rem 1.5rem;
+      border-radius: 1.8rem;
+      box-shadow: 0 12px 30px -10px rgba(0, 20, 40, 0.08);
+      transition: 0.25s;
+      border: 1px solid rgba(42, 127, 170, 0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -12px rgba(11, 43, 74, 0.12);
+    }
+
+    .card i {
+      font-size: 2.6rem;
+      color: #2a7faa;
+      margin-bottom: 0.8rem;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      color: #3d5168;
+    }
+
+    /* about */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1.2rem;
+      color: #2c4058;
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .stat-item {
+      background: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #e8f0f6;
+    }
+
+    .stat-item strong {
+      font-size: 1.8rem;
+      color: #0b2b4a;
+    }
+
+    .about-icon {
+      text-align: center;
+      font-size: 7rem;
+      color: #2a7faa;
+      opacity: 0.3;
+    }
+
+    /* gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      background: white;
+      border-radius: 1.8rem;
+      overflow: hidden;
+      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.04);
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #2a7faa;
+      background: #eef5fa;
+      transition: 0.2s;
+      border: 1px solid #dce8f2;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+      background: #e2eef8;
+    }
+
+    .gallery-item span {
+      background: rgba(11, 43, 74, 0.7);
+      color: white;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* courses */
+    .course-card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.8rem;
+      border-left: 5px solid #2a7faa;
+      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.04);
+    }
+
+    .course-card h3 i {
+      margin-right: 0.6rem;
+      color: #2a7faa;
+    }
+
+    .course-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 0.8rem 0 0.2rem;
+      color: #4b637c;
+      font-size: 0.95rem;
+    }
+
+    .course-meta i {
+      margin-right: 0.3rem;
+    }
+
+    .tag {
+      background: #e5f0f7;
+      color: #1a4c6e;
+      border-radius: 40px;
+      padding: 0.1rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    /* footer */
+    footer {
+      background: #0b1f30;
+      color: #b6cddf;
+      padding: 2.5rem 0 1.5rem;
+      margin-top: 2rem;
+      border-radius: 2rem 2rem 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-grid h4 {
+      color: white;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-grid ul {
+      list-style: none;
+    }
+
+    .footer-grid li {
+      margin: 0.4rem 0;
+    }
+
+    .footer-grid a {
+      color: #b6cddf;
+      text-decoration: none;
+    }
+
+    .footer-grid a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #2b4055;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem 0;
+        border-top: 1px solid #e0eaf2;
+        margin-top: 0.5rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .stats {
+        justify-content: center;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-wrapper">
+      <div class="logo">
+        <i class="fas fa-seedling"></i> RYFI
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" class="active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#" data-page="about"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="#" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
+        <li><a href="#" data-page="courses"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page: Home -->
+  <section id="home" class="page active">
+    <div class="container">
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Empowering youth,<br>building tomorrow</h1>
+          <p>Rivers Youth Future Initiative equips young leaders with skills, mentorship, and opportunities to shape a sustainable future.</p>
+          <a href="#" class="btn" data-page="courses">Explore courses <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-hands-holding-child"></i>
+        </div>
+      </div>
+
+      <h2 class="section-title">Why RYFI?</h2>
+      <div class="grid-2">
+        <div class="card"><i class="fas fa-lightbulb"></i><h3>Innovation</h3><p>Hands-on learning in tech, green energy, and creative industries.</p></div>
+        <div class="card"><i class="fas fa-users"></i><h3>Community</h3><p>Join a network of changemakers and local mentors.</p></div>
+        <div class="card"><i class="fas fa-globe-africa"></i><h3>Global vision</h3><p>Programs designed with a future-ready, sustainable outlook.</p></div>
+        <div class="card"><i class="fas fa-hand-holding-heart"></i><h3>Support</h3><p>Scholarships, equipment, and ongoing guidance for every member.</p></div>
+      </div>
+
+      <div style="margin-top: 2.5rem; background: white; padding: 2rem; border-radius: 2rem; box-shadow: 0 8px 24px -8px rgba(0,0,0,0.03);">
+        <h3 style="font-size: 1.6rem;">Upcoming event</h3>
+        <p><i class="fas fa-calendar-alt" style="color:#2a7faa;"></i> 15 August 2026 – Youth Innovation Summit, Port Harcourt</p>
+        <a href="#" class="btn" style="margin-top: 0.5rem; padding: 0.5rem 1.8rem;">Register</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page: About -->
+  <section id="about" class="page">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>About RYFI</h2>
+          <p>Rivers Youth Future Initiative is a youth-centered organisation founded in 2022. We believe that every young person in the Niger Delta deserves access to quality education, digital skills, and a platform to voice their ideas.</p>
+          <p>We partner with local schools, tech hubs, and international donors to deliver impactful programs in STEAM, entrepreneurship, and environmental stewardship.</p>
+          <div class="stats">
+            <div class="stat-item"><strong>2,400+</strong> youth reached</div>
+            <div class="stat-item"><strong>18</strong> partner organisations</div>
+            <div class="stat-item"><strong>85%</strong> employment/up-skilling rate</div>
+          </div>
+        </div>
+        <div class="about-icon">
+          <i class="fas fa-people-arrows"></i>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; background: white; border-radius: 1.8rem; padding: 1.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+        <h3><i class="fas fa-quote-left" style="color: #2a7faa;"></i> Our mission</h3>
+        <p style="font-size: 1.2rem; font-style: italic; max-width: 700px;">“To unlock the potential of Rivers youth through inclusive education, mentorship, and innovation, fostering a generation of leaders who drive sustainable development.”</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page: Gallery -->
+  <section id="gallery" class="page">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-camera"></i> Gallery</h2>
+      <p style="margin-bottom: 2rem; color: #2c4058;">Moments from our workshops, community events, and youth summits.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><i class="fas fa-code"></i><span>Coding lab</span></div>
+        <div class="gallery-item"><i class="fas fa-leaf"></i><span>Green project</span></div>
+        <div class="gallery-item"><i class="fas fa-robot"></i><span>Robotics</span></div>
+        <div class="gallery-item"><i class="fas fa-chalkboard"></i><span>Mentorship</span></div>
+        <div class="gallery-item"><i class="fas fa-users-cog"></i><span>Team building</span></div>
+        <div class="gallery-item"><i class="fas fa-seedling"></i><span>Farm visit</span></div>
+        <div class="gallery-item"><i class="fas fa-laptop-code"></i><span>Digital skills</span></div>
+        <div class="gallery-item"><i class="fas fa-handshake"></i><span>Partners</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page: Courses -->
+  <section id="courses" class="page">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Our courses</h2>
+      <p style="margin-bottom: 2rem; color: #2c4058;">Practical, hands-on programs designed for the future of work and leadership.</p>
+      <div class="grid-3">
+        <div class="course-card"><h3><i class="fas fa-code"></i> Full-stack web dev</h3><p>HTML, CSS, JavaScript, React, Node.js — build real projects.</p><div class="course-meta"><span><i class="far fa-clock"></i> 12 weeks</span><span><i class="fas fa-user-graduate"></i> 25 seats</span></div><span class="tag">tech</span></div>
+        <div class="course-card"><h3><i class="fas fa-solar-panel"></i> Renewable energy</h3><p>Solar installation, energy efficiency, and green entrepreneurship.</p><div class="course-meta"><span><i class="far fa-clock"></i> 8 weeks</span><span><i class="fas fa-user-graduate"></i> 20 seats</span></div><span class="tag">green</span></div>
+        <div class="course-card"><h3><i class="fas fa-bullhorn"></i> Digital marketing</h3><p>Social media strategy, content creation, analytics and branding.</p><div class="course-meta"><span><i class="far fa-clock"></i> 6 weeks</span><span><i class="fas fa-user-graduate"></i> 30 seats</span></div><span class="tag">creative</span></div>
+        <div class="course-card"><h3><i class="fas fa-microchip"></i> IoT & robotics</h3><p>Arduino, sensors, automation, and prototyping for smart solutions.</p><div class="course-meta"><span><i class="far fa-clock"></i> 10 weeks</span><span><i class="fas fa-user-graduate"></i> 18 seats</span></div><span class="tag">tech</span></div>
+        <div class="course-card"><h3><i class="fas fa-pencil-alt"></i> Entrepreneurship</h3><p>Business planning, finance, pitching, and impact measurement.</p><div class="course-meta"><span><i class="far fa-clock"></i> 8 weeks</span><span><i class="fas fa-user-graduate"></i> 25 seats</span></div><span class="tag">business</span></div>
+        <div class="course-card"><h3><i class="fas fa-paint-brush"></i> Creative design</h3><p>Graphic design, UI/UX, video editing, and brand identity.</p><div class="course-meta"><span><i class="far fa-clock"></i> 6 weeks</span><span><i class="fas fa-user-graduate"></i> 20 seats</span></div><span class="tag">creative</span></div>
+      </div>
+      <div style="margin-top: 2rem; padding: 1.5rem; background: #e5f0f7; border-radius: 2rem; text-align: center;">
+        <p><i class="fas fa-info-circle" style="color:#0b2b4a;"></i> Scholarships available for underrepresented youth. Contact us to learn more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><h4>RYFI</h4><ul><li>Rivers Youth Future Initiative</li><li>Port Harcourt, Nigeria</li></ul></div>
+        <div><h4>Quick links</h4><ul><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="courses">Courses</a></li></ul></div>
+        <div><h4>Connect</h4><ul><li><i class="fab fa-instagram"></i> @ryfi_ng</li><li><i class="fab fa-twitter"></i> @ryfi_initiative</li><li><i class="fas fa-envelope"></i> hello@ryfi.org</li></ul></div>
+      </div>
+      <div class="copyright">&copy; 2026 Rivers Youth Future Initiative. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Navigation toggle (mobile)
+      const toggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      toggle.addEventListener('click', function(e) {
+        navLinks.classList.toggle('open');
+      });
+
+      // Page switching logic
+      const navItems = document.querySelectorAll('.nav-links a[data-page]');
+      const pages = {
+        home: document.getElementById('home'),
+        about: document.getElementById('about'),
+        gallery: document.getElementById('gallery'),
+        courses: document.getElementById('courses')
+      };
+
+      // also handle any other links that have data-page (buttons, footer)
+      function switchPage(pageId) {
+        // hide all pages
+        Object.values(pages).forEach(p => p.classList.remove('active'));
+        // show selected
+        if (pages[pageId]) pages[pageId].classList.add('active');
+        // update nav active class
+        navItems.forEach(link => link.classList.remove('active'));
+        navItems.forEach(link => {
+          if (link.dataset.page === pageId) link.classList.add('active');
+        });
+        // close mobile menu
+        navLinks.classList.remove('open');
+        // scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // event listeners for nav links
+      navItems.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = this.dataset.page;
+          if (page) switchPage(page);
+        });
+      });
+
+      // handle footer and button links with data-page
+      document.querySelectorAll('[data-page]').forEach(el => {
+        // skip nav links already handled
+        if (el.closest('.nav-links')) return;
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = this.dataset.page;
+          if (page) switchPage(page);
+        });
+      });
+
+      // set default page (home is active by default, but ensure nav active)
+      // make sure home is active if none selected
+      if (!document.querySelector('.nav-links a.active')) {
+        const homeLink = document.querySelector('.nav-links a[data-page="home"]');
+        if (homeLink) homeLink.classList.add('active');
+      }
+    })();
+  </script>
+</body>
+</html>
