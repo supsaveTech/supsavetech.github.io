@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    /* ----- global reset & base ----- */
     * {
       margin: 0;
       padding: 0;
@@ -28,7 +27,6 @@
       padding: 2rem 1.5rem;
     }
 
-    /* main glass card – shared container */
     .cosmic-card {
       max-width: 1300px;
       width: 100%;
@@ -48,7 +46,6 @@
       100% { box-shadow: 0 35px 60px -8px #1f0a2e, 0 0 0 4px #ffb3f0, 0 0 60px #c28aff; }
     }
 
-    /* ----- header / brand + tabs ----- */
     .header {
       display: flex;
       flex-wrap: wrap;
@@ -95,7 +92,6 @@
       100% { transform: scale(1.2); opacity: 1; text-shadow: 0 0 30px #ffa0f0; }
     }
 
-    /* ----- tab navigation (flashy pills) ----- */
     .tab-nav {
       display: flex;
       flex-wrap: wrap;
@@ -145,7 +141,6 @@
       color: #1a0f1f;
     }
 
-    /* ----- page container (tabs content) ----- */
     .pages-container {
       margin-top: 1.2rem;
       min-height: 480px;
@@ -165,8 +160,8 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* ----- reusable components ----- */
-    .hero, .products, .about-grid, .testimonial-grid, .contact-wrap, .auth-wrap {
+    /* shared components */
+    .hero, .about-grid, .contact-wrap, .auth-wrap {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
@@ -216,6 +211,35 @@
       background: linear-gradient(145deg, #c88aff, #e07cff);
     }
 
+    /* image styles */
+    .img-round {
+      border-radius: 30px 12px 30px 12px;
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid rgba(255, 180, 255, 0.2);
+      box-shadow: 0 10px 30px -10px #00000066, 0 0 20px #b77aff33;
+      transition: all 0.3s ease;
+      object-fit: cover;
+    }
+
+    .img-round:hover {
+      transform: scale(1.01);
+      box-shadow: 0 15px 40px -8px #1f0a2e, 0 0 40px #b77aff88;
+    }
+
+    .img-sm {
+      max-height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .img-med {
+      max-height: 280px;
+      object-fit: cover;
+      width: 100%;
+    }
+
     .glow-ring {
       width: 200px;
       height: 200px;
@@ -226,6 +250,7 @@
       justify-content: center;
       align-items: center;
       animation: pulseRing 4s infinite alternate;
+      flex-shrink: 0;
     }
 
     @keyframes pulseRing {
@@ -240,14 +265,14 @@
     }
 
     /* product grid */
-    .product-grid, .testimonial-grid {
+    .product-grid, .testimonial-grid, .blog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.8rem;
       width: 100%;
     }
 
-    .product-item, .testi-item {
+    .product-item, .testi-item, .blog-item {
       background: rgba(30, 16, 40, 0.5);
       backdrop-filter: blur(8px);
       border-radius: 30px 12px 30px 12px;
@@ -258,10 +283,19 @@
       transition: all 0.25s ease;
     }
 
-    .product-item:hover, .testi-item:hover {
+    .product-item:hover, .testi-item:hover, .blog-item:hover {
       transform: translateY(-8px);
       border-color: #f0a0ff;
       box-shadow: 0 20px 40px -8px #1f0a2e, 0 0 30px #b77aff88;
+    }
+
+    .product-item img, .blog-item img {
+      border-radius: 20px 8px 20px 8px;
+      margin-bottom: 0.6rem;
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 180, 255, 0.15);
     }
 
     .product-item i {
@@ -271,7 +305,7 @@
       margin-bottom: 0.4rem;
     }
 
-    .product-item h4, .testi-item h4 {
+    .product-item h4, .testi-item h4, .blog-item h4 {
       font-size: 1.2rem;
       font-weight: 700;
       margin: 0.3rem 0;
@@ -293,8 +327,7 @@
       font-size: 0.85rem;
     }
 
-    /* testimonial */
-    .testi-item p {
+    .testi-item p, .blog-item p {
       font-size: 0.95rem;
       color: #d9c2f0;
       font-style: italic;
@@ -306,7 +339,6 @@
       letter-spacing: 3px;
     }
 
-    /* about */
     .about-grid {
       align-items: center;
     }
@@ -323,7 +355,10 @@
       width: 24px;
     }
 
-    /* contact + address */
+    .about-image {
+      flex: 1 1 280px;
+    }
+
     .contact-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -358,7 +393,6 @@
       margin-right: 8px;
     }
 
-    /* sign up / login */
     .auth-wrap {
       display: flex;
       justify-content: center;
@@ -392,7 +426,6 @@
       margin-top: 0.6rem;
     }
 
-    /* footer */
     .footer {
       margin-top: 2.8rem;
       padding-top: 1.5rem;
@@ -416,7 +449,6 @@
       filter: drop-shadow(0 0 20px #ffa0f0);
     }
 
-    /* responsive */
     @media (max-width: 680px) {
       .cosmic-card { padding: 1.5rem; border-radius: 2.5rem 1.2rem; }
       .brand h1 { font-size: 2.2rem; }
@@ -430,7 +462,6 @@
 <body>
 <div class="cosmic-card">
 
-  <!-- header + tabs -->
   <header class="header">
     <div class="brand">
       <i class="fas fa-star"></i>
@@ -442,13 +473,13 @@
       <button class="tab-btn" data-page="products"><i class="fas fa-palette"></i> Products</button>
       <button class="tab-btn" data-page="about"><i class="fas fa-info-circle"></i> About</button>
       <button class="tab-btn" data-page="testimonials"><i class="fas fa-comment"></i> Testimonials</button>
+      <button class="tab-btn" data-page="blog"><i class="fas fa-newspaper"></i> Blog</button>
       <button class="tab-btn" data-page="contact"><i class="fas fa-envelope"></i> Contact</button>
       <button class="tab-btn" data-page="signup"><i class="fas fa-user-plus"></i> Sign Up</button>
       <button class="tab-btn" data-page="login"><i class="fas fa-sign-in-alt"></i> Login</button>
     </div>
   </header>
 
-  <!-- pages container -->
   <div class="pages-container">
 
     <!-- HOME -->
@@ -457,15 +488,18 @@
         <div class="hero-text">
           <span class="tagline" style="display:inline-block; background:rgba(255,150,255,0.15); padding:0.3rem 1.8rem; border-radius:40px; font-size:0.8rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; border:1px solid #ffb0f066; margin-bottom:1rem;"><i class="fas fa-bolt"></i> NEW DROP · GLOW UP</span>
           <h2>shine like<br>a galaxy</h2>
-          <p>Cosmic pigments, holographic gloss, and iridescent shimmer — for the peace that glows.</p>
+          <p>Cosmic pigments, holographic gloss, and iridescent shimmer — for the peace that glows. Our USA-made formulas are crafted with stardust and self-love.</p>
           <button class="btn-glow"><i class="fas fa-hand-sparkles" style="margin-right:8px;"></i> SHOP NOW</button>
         </div>
-        <div class="hero-visual" style="flex:1 1 200px; display:flex; justify-content:center;">
+        <div class="hero-visual" style="flex:1 1 200px; display:flex; justify-content:center; flex-direction:column; align-items:center; gap:1rem;">
           <div class="glow-ring"><i class="fas fa-meteor"></i></div>
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=400&h=300&fit=crop&crop=center&auto=format" alt="cosmetic glow" class="img-round img-sm" style="max-width:260px;" />
         </div>
       </div>
-      <div style="margin-top:2rem; color:#bb9fd6; font-size:0.95rem; text-align:center; border-top:1px solid rgba(255,180,255,0.1); padding-top:1.8rem;">
-        <i class="fas fa-sparkles" style="color:#ffb3f0;"></i> PEACE · where radiance meets tranquility
+      <div style="margin-top:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1.5rem; border-top:1px solid rgba(255,180,255,0.1); padding-top:1.8rem;">
+        <div style="text-align:center;"><i class="fas fa-spa" style="font-size:2.5rem; color:#ffb3f0;"></i><p style="margin-top:0.5rem; font-weight:600;">Clean Beauty</p><p style="font-size:0.9rem; color:#bb9fd6;">Vegan & cruelty-free</p></div>
+        <div style="text-align:center;"><i class="fas fa-shipping-fast" style="font-size:2.5rem; color:#ffb3f0;"></i><p style="margin-top:0.5rem; font-weight:600;">Free Shipping</p><p style="font-size:0.9rem; color:#bb9fd6;">On orders over $50</p></div>
+        <div style="text-align:center;"><i class="fas fa-hand-holding-heart" style="font-size:2.5rem; color:#ffb3f0;"></i><p style="margin-top:0.5rem; font-weight:600;">Glow Guarantee</p><p style="font-size:0.9rem; color:#bb9fd6;">Love it or return it</p></div>
       </div>
     </div>
 
@@ -475,12 +509,30 @@
         <i class="fas fa-bolt" style="color:#ffb3f0;"></i> cosmic bestsellers <i class="fas fa-bolt" style="color:#ffb3f0;"></i>
       </h3>
       <div class="product-grid">
-        <div class="product-item"><i class="fas fa-tint"></i><h4>Liquid Star</h4><p>Holographic highlighter</p><span class="price-tag">$40</span></div>
-        <div class="product-item"><i class="fas fa-gem"></i><h4>Aurora Veil</h4><p>Iridescent powder</p><span class="price-tag">$28</span></div>
-        <div class="product-item"><i class="fas fa-fire"></i><h4>Neon Petal</h4><p>Flashy blush + glow</p><span class="price-tag">$22</span></div>
-        <div class="product-item"><i class="fas fa-circle"></i><h4>Moon Gloss</h4><p>Shifting lip oil</p><span class="price-tag">$19</span></div>
-        <div class="product-item"><i class="fas fa-star"></i><h4>Stellar Mist</h4><p>Setting spray</p><span class="price-tag">$26</span></div>
-        <div class="product-item"><i class="fas fa-moon"></i><h4>Lunar Base</h4><p>Primer + glow</p><span class="price-tag">$30</span></div>
+        <div class="product-item">
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=300&h=200&fit=crop&crop=center&auto=format" alt="Liquid Star" />
+          <h4>Liquid Star</h4><p>Holographic highlighter</p><span class="price-tag">$34</span>
+        </div>
+        <div class="product-item">
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=300&h=200&fit=crop&crop=center&auto=format&sat=-20" alt="Aurora Veil" />
+          <h4>Aurora Veil</h4><p>Iridescent powder</p><span class="price-tag">$28</span>
+        </div>
+        <div class="product-item">
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=300&h=200&fit=crop&crop=center&auto=format&sat=10" alt="Neon Petal" />
+          <h4>Neon Petal</h4><p>Flashy blush + glow</p><span class="price-tag">$22</span>
+        </div>
+        <div class="product-item">
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=300&h=200&fit=crop&crop=center&auto=format&sat=20" alt="Moon Gloss" />
+          <h4>Moon Gloss</h4><p>Shifting lip oil</p><span class="price-tag">$19</span>
+        </div>
+        <div class="product-item">
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=300&h=200&fit=crop&crop=center&auto=format&sat=30" alt="Stellar Mist" />
+          <h4>Stellar Mist</h4><p>Setting spray</p><span class="price-tag">$26</span>
+        </div>
+        <div class="product-item">
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=300&h=200&fit=crop&crop=center&auto=format&sat=40" alt="Lunar Base" />
+          <h4>Lunar Base</h4><p>Primer + glow</p><span class="price-tag">$30</span>
+        </div>
       </div>
     </div>
 
@@ -495,10 +547,16 @@
             <li><i class="fas fa-check-circle"></i> holographic & iridescent finishes</li>
             <li><i class="fas fa-check-circle"></i> clean, skin‑first formulas</li>
             <li><i class="fas fa-check-circle"></i> made with cosmic energy ✨</li>
+            <li><i class="fas fa-check-circle"></i> Proudly formulated in California</li>
           </ul>
+          <p style="margin-top:1.2rem; font-style:italic; color:#c9b0e0;">"We believe makeup is a form of self-expression — a way to let your inner light shine outward."</p>
         </div>
-        <div style="flex:1 1 200px; display:flex; justify-content:center;">
-          <div class="glow-ring" style="width:170px; height:170px;"><i class="fas fa-galaxy" style="font-size:4.5rem;"></i></div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&h=400&fit=crop&crop=center&auto=format" alt="cosmetic beauty" class="img-round img-med" />
+          <div style="display:flex; gap:0.8rem; margin-top:1rem;">
+            <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=200&h=150&fit=crop&crop=center&auto=format" class="img-round" style="flex:1; height:100px; object-fit:cover;" alt="glow" />
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&h=150&fit=crop&crop=center&auto=format" class="img-round" style="flex:1; height:100px; object-fit:cover;" alt="beauty" />
+          </div>
         </div>
       </div>
     </div>
@@ -509,9 +567,37 @@
         <i class="fas fa-comment-dots" style="color:#ffb3f0;"></i> what our glow‑babes say
       </h3>
       <div class="testimonial-grid">
-        <div class="testi-item"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Literally out of this world. My skin never looked so radiant."</p><h4>— Zara</h4></div>
-        <div class="testi-item"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"The holographic highlighter is everything. I get compliments daily."</p><h4>— Maya</h4></div>
-        <div class="testi-item"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"PEACE gave me the glow I didn't know I needed. obsessed."</p><h4>— Luna</h4></div>
+        <div class="testi-item"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Literally out of this world. My skin never looked so radiant. The Liquid Star is my holy grail."</p><h4>— Zara</h4><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=100&h=100&fit=crop&crop=center&auto=format" style="border-radius:50%; width:60px; height:60px; object-fit:cover; margin-top:0.5rem; border:2px solid #b77aff;" /></div>
+        <div class="testi-item"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"The holographic highlighter is everything. I get compliments daily. PEACE is my new obsession."</p><h4>— Maya</h4><img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=100&h=100&fit=crop&crop=center&auto=format" style="border-radius:50%; width:60px; height:60px; object-fit:cover; margin-top:0.5rem; border:2px solid #b77aff;" /></div>
+        <div class="testi-item"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"PEACE gave me the glow I didn't know I needed. obsessed. The Aurora Veil is pure magic."</p><h4>— Luna</h4><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=100&h=100&fit=crop&crop=center&auto=format" style="border-radius:50%; width:60px; height:60px; object-fit:cover; margin-top:0.5rem; border:2px solid #b77aff;" /></div>
+        <div class="testi-item"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Finally, a brand that's as flashy as my personality. The Neon Petal blush is a game-changer."</p><h4>— Nova</h4><img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=100&h=100&fit=crop&crop=center&auto=format" style="border-radius:50%; width:60px; height:60px; object-fit:cover; margin-top:0.5rem; border:2px solid #b77aff;" /></div>
+      </div>
+    </div>
+
+    <!-- BLOG (new page) -->
+    <div id="page-blog" class="page">
+      <h3 style="font-size:2rem; font-weight:700; margin-bottom:1.8rem; display:flex; align-items:center; gap:12px;">
+        <i class="fas fa-newspaper" style="color:#ffb3f0;"></i> cosmic beauty journal
+      </h3>
+      <div class="blog-grid">
+        <div class="blog-item">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=250&fit=crop&crop=center&auto=format" alt="skincare" />
+          <h4>5 Steps to Galactic Glow</h4>
+          <p>Unlock your most radiant skin with our cosmic routine — from cleansing to star-lit hydration.</p>
+          <span class="price-tag" style="background:rgba(255,200,255,0.05);">read more →</span>
+        </div>
+        <div class="blog-item">
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=400&h=250&fit=crop&crop=center&auto=format" alt="makeup" />
+          <h4>Holographic How-To</h4>
+          <p>Master the art of iridescent makeup with our pro tips for a show-stopping, multidimensional look.</p>
+          <span class="price-tag" style="background:rgba(255,200,255,0.05);">read more →</span>
+        </div>
+        <div class="blog-item">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=250&fit=crop&crop=center&auto=format" alt="selfcare" />
+          <h4>Peace & Self-Love</h4>
+          <p>Our founder shares how makeup became a tool for mindfulness, confidence, and cosmic self-expression.</p>
+          <span class="price-tag" style="background:rgba(255,200,255,0.05);">read more →</span>
+        </div>
       </div>
     </div>
 
@@ -523,12 +609,19 @@
           <p><i class="fas fa-envelope"></i> glow@peacecosmetics.com</p>
           <p><i class="fas fa-phone-alt"></i> +1 (800) 555‑GLOW</p>
           <p><i class="fas fa-clock"></i> Mon–Fri 9am – 7pm EST</p>
+          <p><i class="fas fa-star"></i> We reply within 24 hours</p>
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=400&h=200&fit=crop&crop=center&auto=format" class="img-round" style="margin-top:1rem; max-height:120px; object-fit:cover;" alt="contact" />
         </div>
         <div class="contact-address">
           <h3><i class="fas fa-map-pin"></i> our studio</h3>
           <p><span class="flag">🇺🇸</span> <strong>PEACE HQ</strong><br>123 Cosmic Lane, Suite 404<br>Los Angeles, CA 90028<br>United States</p>
           <p><i class="fas fa-globe-americas"></i> proudly based in the USA</p>
-          <p style="margin-top:1rem; font-size:0.9rem; border-top:1px solid rgba(255,180,255,0.1); padding-top:0.8rem;"><i class="fas fa-star"></i> visit our flagship for a flashy experience</p>
+          <p><i class="fas fa-building"></i> Visit our flagship for a flashy experience</p>
+          <p style="margin-top:1rem; font-size:0.9rem; border-top:1px solid rgba(255,180,255,0.1); padding-top:0.8rem;">
+            <i class="fas fa-calendar-alt"></i> Open for appointments<br>
+            <i class="fas fa-map-marker-alt"></i> See you at the cosmic studio ✨
+          </p>
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=200&fit=crop&crop=center&auto=format" class="img-round" style="margin-top:1rem; max-height:120px; object-fit:cover;" alt="studio" />
         </div>
       </div>
     </div>
@@ -538,12 +631,13 @@
       <div class="auth-wrap">
         <div class="auth-box">
           <h2><i class="fas fa-user-astronaut"></i> join the glow</h2>
-          <p style="color:#d9c2f0; margin-bottom:1.2rem;">create your cosmic account</p>
+          <p style="color:#d9c2f0; margin-bottom:1.2rem;">create your cosmic account & get 15% off</p>
           <input type="text" placeholder="full name" /> 
           <input type="email" placeholder="email" /> 
           <input type="password" placeholder="password" /> 
           <button class="btn-glow"><i class="fas fa-rocket"></i> sign up</button>
           <p style="margin-top:1rem; font-size:0.8rem; color:#b89fd0;">already have an account? <span style="color:#ffb3f0; cursor:pointer;" onclick="switchTab('login')">Login</span></p>
+          <img src="https://images.unsplash.com/photo-1596462502278-5bf2d09d2b1f?w=400&h=150&fit=crop&crop=center&auto=format" class="img-round" style="margin-top:1rem; max-height:100px; object-fit:cover;" alt="glow" />
         </div>
       </div>
     </div>
@@ -558,12 +652,12 @@
           <input type="password" placeholder="password" /> 
           <button class="btn-glow"><i class="fas fa-meteor"></i> login</button>
           <p style="margin-top:1rem; font-size:0.8rem; color:#b89fd0;">new here? <span style="color:#ffb3f0; cursor:pointer;" onclick="switchTab('signup')">Sign up</span></p>
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=150&fit=crop&crop=center&auto=format" class="img-round" style="margin-top:1rem; max-height:100px; object-fit:cover;" alt="cosmic" />
         </div>
       </div>
     </div>
   </div>
 
-  <!-- footer -->
   <footer class="footer">
     <div><span><i class="fas fa-star"></i> PEACE · flashy cosmetics</span> <span style="margin-left:1rem;"><i class="far fa-clock"></i> always radiant</span></div>
     <div class="social"><i class="fab fa-instagram"></i><i class="fab fa-tiktok"></i><i class="fab fa-spotify"></i><i class="fas fa-music"></i></div>
@@ -578,17 +672,16 @@
       products: document.getElementById('page-products'),
       about: document.getElementById('page-about'),
       testimonials: document.getElementById('page-testimonials'),
+      blog: document.getElementById('page-blog'),
       contact: document.getElementById('page-contact'),
       signup: document.getElementById('page-signup'),
       login: document.getElementById('page-login')
     };
 
     function switchTab(pageId) {
-      // remove active from all tabs & pages
       tabs.forEach(btn => btn.classList.remove('active'));
       Object.values(pages).forEach(p => p.classList.remove('active-page'));
 
-      // activate corresponding tab
       const activeTab = Array.from(tabs).find(btn => btn.dataset.page === pageId);
       if (activeTab) activeTab.classList.add('active');
       const activePage = pages[pageId];
@@ -602,10 +695,8 @@
       });
     });
 
-    // expose for inline onclick (signup/login cross-link)
     window.switchTab = switchTab;
 
-    // ensure home active by default (if any mismatch)
     const defaultActive = document.querySelector('.tab-btn.active');
     if (!defaultActive || !defaultActive.dataset.page) {
       const homeBtn = document.querySelector('.tab-btn[data-page="home"]');
